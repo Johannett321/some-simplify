@@ -30,18 +30,6 @@ Start by cloning the application inside your desired location
 git clone <project_url>
 ```
 
-#### Installing frontend packages
-Install all frontend packages by running the following command inside the frontend folder:
-```
-npm install
-```
-
-#### Installing backend packages
-Install all backend packages by running the following command inside the backend folder:
-```
-mvn clean install
-```
-
 #### Update the following files
 Update the name of the project and some other things in the following places:
 - /frontend/package.json (around line 2)
@@ -54,6 +42,19 @@ Update the name of the project and some other things in the following places:
 
 #### Update the Clerk Key
 Insert the Clerk API key in the "/frontend/.env" file
+
+#### Installing frontend packages
+Install all frontend packages by running the following command inside the frontend folder:
+```
+npm install
+```
+
+#### Installing backend packages
+Install all backend packages by running the following command inside the backend folder:
+```
+mvn clean install
+```
+Note: it will probably give you an error, but the first time you start the application (like described below), it will succeed
 
 ## Starting the application
 Run the following command in the root directory of the project
