@@ -1,5 +1,6 @@
-package com.johansvartdal.ReactSpringTemplate.user;
+package com.johansvartdal.ReactSpringTemplate.repository;
 
+import com.johansvartdal.ReactSpringTemplate.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

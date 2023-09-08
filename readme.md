@@ -1,4 +1,4 @@
-# Spring Angular Starter Template
+# React Spring Starter Template
 
 ## About
 This is a template for the Spring & Angular stack. Here is the complete list
@@ -45,9 +45,12 @@ mvn clean install
 #### Update the following files
 Update the name of the project and some other things in the following places:
 - /frontend/package.json (around line 2)
+- /frontend/.env (Add React API Key)
 - docker-compose.yml (around line 9 and 22)
 - /backend/pom.xml (around line 11, 14 and 15)
 - /backend/src/main/java/com/johansvartdal/ReactSpringTemplate (refactor the filename and the package name)
+- /backend/src/main/java/resources/application.properties (about line 2)
+- /backend/src/main/java/com/johansvartdal/ReactSpringTemplate/ReactSpringTemplateApplication (Refactor filename and classname)
 
 #### Update the Clerk Key
 Insert the Clerk API key in the "/frontend/.env" file

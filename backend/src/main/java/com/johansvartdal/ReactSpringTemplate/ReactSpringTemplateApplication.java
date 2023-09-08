@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PlanifyApplication {
+public class ReactSpringTemplateApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PlanifyApplication.class, args);
+		SpringApplication.run(ReactSpringTemplateApplication.class, args);
 	}
 
 }

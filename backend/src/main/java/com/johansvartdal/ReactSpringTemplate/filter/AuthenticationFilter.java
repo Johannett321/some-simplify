@@ -1,5 +1,7 @@
-package com.johansvartdal.ReactSpringTemplate.authentication;
+package com.johansvartdal.ReactSpringTemplate.filter;
 
+import com.johansvartdal.ReactSpringTemplate.authentication.Authenticate;
+import com.johansvartdal.ReactSpringTemplate.model.AuthenticationToken;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,6 +17,12 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        if (request.getRequestURI().equals("/api/v1/test/")) {
+            filterChain.doFilter(request, response);
+            return;
+        }else {
+            System.out.println(request.getRequestURI());
+        }
 
         // check if session token is present
         Optional<String> sessionToken = Authenticate.getSessionTokenFromCookies(request);

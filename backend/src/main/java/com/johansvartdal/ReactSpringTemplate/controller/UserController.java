@@ -1,5 +1,6 @@
-package com.johansvartdal.ReactSpringTemplate.user;
+package com.johansvartdal.ReactSpringTemplate.controller;
 
+import com.johansvartdal.ReactSpringTemplate.service.UserService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

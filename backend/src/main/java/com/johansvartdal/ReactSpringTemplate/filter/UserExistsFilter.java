@@ -1,5 +1,6 @@
-package com.johansvartdal.ReactSpringTemplate.user;
+package com.johansvartdal.ReactSpringTemplate.filter;
 
+import com.johansvartdal.ReactSpringTemplate.service.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,6 +19,10 @@ public class UserExistsFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        if (request.getRequestURI().equals("/api/v1/test/")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
         // make sure user exists in database
         userService.createUserIfItDoesNotExist();
         filterChain.doFilter(request, response);

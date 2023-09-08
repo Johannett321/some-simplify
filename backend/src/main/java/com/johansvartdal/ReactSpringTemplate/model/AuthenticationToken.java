@@ -1,5 +1,6 @@
-package com.johansvartdal.ReactSpringTemplate.authentication;
+package com.johansvartdal.ReactSpringTemplate.model;
 
+import com.johansvartdal.ReactSpringTemplate.authentication.Authenticate;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 
 public class AuthenticationToken extends AbstractAuthenticationToken {

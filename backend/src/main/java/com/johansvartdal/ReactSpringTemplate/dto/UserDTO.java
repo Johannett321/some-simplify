@@ -1,4 +1,4 @@
-package com.johansvartdal.ReactSpringTemplate.user;
+package com.johansvartdal.ReactSpringTemplate.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

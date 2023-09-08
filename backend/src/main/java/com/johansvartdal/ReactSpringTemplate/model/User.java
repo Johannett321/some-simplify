@@ -1,6 +1,5 @@
-package com.johansvartdal.ReactSpringTemplate.user;
+package com.johansvartdal.ReactSpringTemplate.model;
 
-import com.johansvartdal.ReactSpringTemplate.project.Project;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +16,4 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ourID;
     private String clerkID;
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Project> project;
 }

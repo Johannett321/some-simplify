@@ -1,4 +1,4 @@
-# docker-compose --profile dev up -d --build
+docker-compose --profile dev up -d --build
 cd ./frontend
 npx tailwindcss -i ./src/index.css -o ./public/output.css --watch &
 npm start

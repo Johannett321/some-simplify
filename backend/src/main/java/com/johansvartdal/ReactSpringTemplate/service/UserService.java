@@ -1,6 +1,9 @@
-package com.johansvartdal.ReactSpringTemplate.user;
+package com.johansvartdal.ReactSpringTemplate.service;
 
-import com.johansvartdal.ReactSpringTemplate.authentication.AuthenticationToken;
+import com.johansvartdal.ReactSpringTemplate.model.AuthenticationToken;
+import com.johansvartdal.ReactSpringTemplate.repository.UserRepository;
+import com.johansvartdal.ReactSpringTemplate.model.User;
+import com.johansvartdal.ReactSpringTemplate.dto.UserDTO;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
