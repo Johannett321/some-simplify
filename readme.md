@@ -41,7 +41,8 @@ Update the name of the project and some other things in the following places:
 - /backend/src/main/java/com/johansvartdal/ReactSpringTemplate/ReactSpringTemplateApplication (Refactor filename and classname)
 
 #### Update the Clerk Key
-Insert the Clerk API key in the "/frontend/.env" file
+- Insert the Clerk API key in the "/frontend/.env" file
+- Insert the Secret key in the "/backend/src/main/java/com.johansvartdal.ReactSpringTemplate.authentication.Authenticate" file (Bearer Token)
 
 #### Installing frontend packages
 Install all frontend packages by running the following command inside the frontend folder:

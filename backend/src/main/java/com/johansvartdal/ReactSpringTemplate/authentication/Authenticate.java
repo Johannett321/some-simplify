@@ -13,7 +13,7 @@ import java.util.Optional;
 public class Authenticate {
 
     // the bearer token from Clerk
-    private static final String BEARER_TOKEN = "sk_test_skkAl17XXUxtzFhCEc13j8giJoMJMzmu14eHDtx4fD";
+    private static final String BEARER_TOKEN = "<SECRET_KEY_HERE>";
 
     /**
      * Returns if the user is authenticated or not
