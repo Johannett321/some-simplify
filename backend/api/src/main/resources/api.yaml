@@ -1,0 +1,25 @@
+openapi: 3.0.0
+info:
+  description: API for appweb.appname
+  version: 1.0.0
+  title: appweb.appname API
+  contact:
+    name: Johan Svartdal
+    url: https://www.appweb.lowerappname.com
+    email: johan.svartdal30@gmail.com
+paths:
+  # authApi
+  '/auth/register':
+    $ref: './paths/auth/register.yaml'
+  '/auth/login':
+    $ref: './paths/auth/login.yaml'
+  '/auth/logout':
+    $ref: './paths/auth/logout.yaml'
+
+  # userApi
+  '/user':
+    $ref: './paths/user/user.yaml'
+
+  # tenantApi
+  '/tenant':
+    $ref: './paths/tenant/tenant.yaml'

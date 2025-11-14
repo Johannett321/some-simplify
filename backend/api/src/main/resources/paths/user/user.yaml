@@ -1,0 +1,12 @@
+get:
+  tags:
+    - User
+  summary: Get the current user
+  operationId: getUser
+  responses:
+    '200':
+      description: Retrieve the current user object
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/user/UserTO.yaml'

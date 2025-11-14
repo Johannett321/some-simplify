@@ -1,0 +1,17 @@
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+  email:
+    type: string
+  firstName:
+    type: string
+  lastName:
+    type: string
+  createdAt:
+    type: string
+    format: date-time
+  currentTenantId:
+    type: string
+    description: The ID of the Tenant that the user is logged into

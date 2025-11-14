@@ -1,0 +1,10 @@
+type: object
+properties:
+  error:
+    type: string
+  status:
+    type: number
+  timestamp:
+    type: string
+  path:
+    type: string

@@ -1,0 +1,13 @@
+post:
+  tags:
+    - Auth
+  summary: Register a new user
+  operationId: register
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../schemas/auth/CreateUserCommand.yaml'
+  responses:
+    '200':
+      description: User registered

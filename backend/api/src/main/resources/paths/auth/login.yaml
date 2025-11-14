@@ -1,0 +1,13 @@
+post:
+  tags:
+    - Auth
+  summary: Login
+  operationId: login
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../schemas/auth/LoginUserCommand.yaml'
+  responses:
+    '200':
+      description: The user was successfully logged in

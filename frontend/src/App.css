@@ -1,38 +1,66 @@
-.App {
-  text-align: center;
+#root {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #ffffff !important;
+  color: #213547 !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Force light mode for all components */
+* {
+  color-scheme: light !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Calendar component fixes */
+.rdp {
+  background-color: white !important;
+  color: #374151 !important;
 }
 
-.App-link {
-  color: #61dafb;
+.rdp-button {
+  background-color: transparent !important;
+  color: #374151 !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.rdp-button:hover {
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
+}
+
+.rdp-day_selected {
+  background-color: #3b82f6 !important;
+  color: white !important;
+}
+
+.rdp-day_today {
+  background-color: #dbeafe !important;
+  color: #1e40af !important;
+}
+
+/* Dialog and popover fixes */
+[data-radix-popper-content-wrapper] {
+  background-color: white !important;
+}
+
+/* Ensure ghost buttons are visible */
+.bg-transparent {
+  background-color: transparent !important;
+}
+
+button[variant="ghost"] {
+  background-color: transparent !important;
+  color: #6b7280 !important;
+}
+
+button[variant="ghost"]:hover {
+  background-color: #f3f4f6 !important;
+  color: #374151 !important;
 }
