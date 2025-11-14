@@ -56,9 +56,25 @@ find . \( -name "*.xml" -o -name "*.csv" -o -name "*.txt" -o -name "*.tsx" -o -n
     sed -i '' "s/appweb.groupid/${groupid}/g" "$file"
 done
 
-# TODO: fix groupid
-mv backend/impl/src/main/java/com/appweb/application backend/impl/src/main/java/${groupid_dirs}/${lowerappname}
-mv backend/impl/src/main/java/${groupid_dirs}/.${lowerappname}/Application.java backend/impl/src/main/java/${groupid_dirs}/$.${lowerappname}/${appname}Application.java
+
+# rename package
+old_base="backend/impl/src/main/java/com/appweb/application"
+new_base="backend/impl/src/main/java/$groupid_dirs/$lowerappname"
+
+mkdir -p "$new_base"
+
+# Flytt alt fra gammel mappe hvis den finnes
+if [ -d "$old_base" ]; then
+    mv "$old_base"/* "$new_base"/
+else
+    echo "Fant ikke $old_base"
+    exit 1
+fi
+
+# Gi nytt navn til Application.java hvis den finnes
+if [ -f "$new_base/Application.java" ]; then
+    mv "$new_base/Application.java" "$new_base/${appname}Application.java"
+fi
 
 ####################################### SETUP FRONTEND #######################################
 echo "Running npm install in frontend folder..."
