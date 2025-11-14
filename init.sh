@@ -54,6 +54,7 @@ find . \( -name "*.xml" -o -name "*.csv" -o -name "*.txt" -o -name "*.tsx" -o -n
     sed -i '' "s/appweb.appname/${appname}/g" "$file"
     sed -i '' "s/appweb.lowerappname/${lowerappname}/g" "$file"
     sed -i '' "s/appweb.groupid/${groupid}/g" "$file"
+    sed -i '' "s/com.appweb.application/${groupid}.${lowerappname}/g" "$file"
 done
 
 
