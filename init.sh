@@ -49,7 +49,7 @@ lowerappname=$(echo "$appname" | tr '[:upper:]' '[:lower:]')
 groupid_dirs=$(echo "$groupid" | tr '.' '/')
 
 ########################################## FIX FILES ##########################################
-find . \( -name "*.xml" -o -name "*.csv" -o -name "*.txt" -o -name "*.tsx" -o -name "*.json" -o -name "*.yaml" -o -name "*.html" -o -name "*.java" \) -type f -print0 \
+find . \( -name "*.xml" -o -name "*.csv" -o -name "*.txt" -o -name "*.tsx" -o -name "*.json" -o -name "*.yaml" -o -name "*.html" -o -name "*.java" -o -name "*.properties" -o -name "*.yml" \) -type f -print0 \
 | while IFS= read -r -d '' file; do
     sed -i '' "s/appweb.appname/${appname}/g" "$file"
     sed -i '' "s/appweb.lowerappname/${lowerappname}/g" "$file"
