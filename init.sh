@@ -57,8 +57,8 @@ find . \( -name "*.xml" -o -name "*.csv" -o -name "*.txt" -o -name "*.tsx" -o -n
 done
 
 # TODO: fix groupid
-mv backend/impl/src/main/java/com/appweb/application backend/impl/src/main/java/${groupid_dirs}
-mv backend/impl/src/main/java/${groupid_dirs}/Application.java backend/impl/src/main/java/${groupid_dirs}/${appname}Application.java
+mv backend/impl/src/main/java/com/appweb/application backend/impl/src/main/java/${groupid_dirs}/${lowerappname}
+mv backend/impl/src/main/java/${groupid_dirs}/.${lowerappname}/Application.java backend/impl/src/main/java/${groupid_dirs}/$.${lowerappname}/${appname}Application.java
 
 ####################################### SETUP FRONTEND #######################################
 echo "Running npm install in frontend folder..."
