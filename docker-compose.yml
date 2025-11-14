@@ -9,9 +9,9 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: appweb.lowerappnamedb
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - appweb.lowerappname_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
 
 volumes:
-  postgres_data:
+  appweb.lowerappname_data:
