@@ -2,6 +2,7 @@
 import {createContext, type ReactNode, useEffect, useState} from "react";
 import apiConfig from "@/config/ApiConfig.ts";
 import {type ErrorResponseTO, UserApi, type UserTO} from "@/api";
+import ServiceUnavailable from "@/components/ServiceUnavailable.tsx";
 
 type UserProviderContextType = {
     user: UserTO | null;
@@ -36,6 +37,12 @@ export const UserProvider = ({children}: { children: ReactNode }) => {
             setLoading(false)
         })
     }, []);
+
+    if (error && !error?.status) {
+        return (
+            <ServiceUnavailable />
+        )
+    }
 
     return (
         <UserContext.Provider value={{user, loading, error, userApi}}>
