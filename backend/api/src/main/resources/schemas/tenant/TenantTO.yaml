@@ -4,23 +4,5 @@ properties:
     type: string
   name:
     type: string
-  orgNumber:
-    type: string
-  email:
-    type: string
-  phone:
-    type: string
-  address1:
-    type: string
-  address2:
-    type: string
-  postalCode:
-    type: string
-  city:
-    type: string
-  logoUrl:
-    type: string
 required:
   - name
-  - orgNumber
-  - vatRegistered
