@@ -21,5 +21,7 @@ paths:
     $ref: './paths/user/user.yaml'
 
   # tenantApi
-  '/tenant':
+  '/tenants':
+    $ref: './paths/tenant/tenants.yaml'
+  '/tenants/{id}':
     $ref: './paths/tenant/tenant.yaml'

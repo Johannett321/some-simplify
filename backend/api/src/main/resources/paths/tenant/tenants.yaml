@@ -1,0 +1,45 @@
+get:
+  summary: Get all tenants that the user has access to
+  operationId: getTenants
+  tags:
+    - Tenant
+  responses:
+    '200':
+      description: Get a list of organizations that the user has access to
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../schemas/tenant/TenantTO.yaml'
+    '404':
+      description: The user does not have an organization yet
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/ErrorResponseTO.yaml'
+post:
+  tags:
+    - Tenant
+  summary: Create a new tenant
+  operationId: createTenant
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../schemas/tenant/TenantTO.yaml'
+  responses:
+    '200':
+      description: Tenant created successfully
+      content:
+        application/json:
+          schema:
+            type: string
+            example: Tenant ID
+    '400':
+      description: Invalid input
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/ErrorResponseTO.yaml'
