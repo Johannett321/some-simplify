@@ -17,7 +17,6 @@ import java.util.Locale;
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
-    @Mapping(source = "currentTenant.id", target = "currentTenantId")
     UserTO toUserResponseTO(User user);
 
     @Mapping(target = "email", qualifiedByName = "lowerCase")
