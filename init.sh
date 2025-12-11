@@ -73,8 +73,8 @@ else
 fi
 
 # Gi nytt navn til Application.java hvis den finnes
-if [ -f "$new_base/Application.java" ]; then
-    mv "$new_base/Application.java" "$new_base/${appname}Application.java"
+if [ -f "$new_base/TemplateAppApplication.java" ]; then
+    mv "$new_base/TemplateAppApplication.java" "$new_base/${appname}Application.java"
 fi
 
 ####################################### SETUP FRONTEND #######################################
