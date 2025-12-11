@@ -51,15 +51,15 @@ groupid_dirs=$(echo "$groupid" | tr '.' '/')
 ########################################## FIX FILES ##########################################
 find . \( -name "*.xml" -o -name "*.csv" -o -name "*.txt" -o -name "*.tsx" -o -name "*.json" -o -name "*.yaml" -o -name "*.html" -o -name "*.java" -o -name "*.properties" -o -name "*.yml" \) -type f -print0 \
 | while IFS= read -r -d '' file; do
-    sed -i '' "s/appweb.appname/${appname}/g" "$file"
-    sed -i '' "s/appweb.lowerappname/${lowerappname}/g" "$file"
-    sed -i '' "s/appweb.groupid/${groupid}/g" "$file"
-    sed -i '' "s/com.appweb.application/${groupid}.${lowerappname}/g" "$file"
+    sed -i '' "s/TemplateApp/${appname}/g" "$file"
+    sed -i '' "s/templateapp/${lowerappname}/g" "$file"
+    sed -i '' "s/com.templateapp/${groupid}/g" "$file"
+    sed -i '' "s/com.templateapp.templateapp/${groupid}.${lowerappname}/g" "$file"
 done
 
 
 # rename package
-old_base="backend/impl/src/main/java/com/appweb/application"
+old_base="backend/impl/src/main/java/com/templateapp/templateapp"
 new_base="backend/impl/src/main/java/$groupid_dirs/$lowerappname"
 
 mkdir -p "$new_base"

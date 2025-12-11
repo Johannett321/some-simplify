@@ -33,7 +33,7 @@ export default function SplashScreen({ show, onFinish, minDurationMs = 1200 }: P
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
-                        appweb.appname
+                        TemplateApp
                     </motion.div>
 
                     {/* Progress line */}

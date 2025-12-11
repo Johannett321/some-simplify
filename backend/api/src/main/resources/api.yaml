@@ -1,11 +1,11 @@
 openapi: 3.0.0
 info:
-  description: API for appweb.appname
+  description: API for TemplateApp
   version: 1.0.0
-  title: appweb.appname API
+  title: TemplateApp API
   contact:
     name: Johan Svartdal
-    url: https://www.appweb.lowerappname.com
+    url: https://www.templateapp.com
     email: johan.svartdal30@gmail.com
 paths:
   # authApi

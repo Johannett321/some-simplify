@@ -3,8 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>appweb.groupid</groupId>
-        <artifactId>appweb.lowerappname</artifactId>
+        <groupId>com.templateapp</groupId>
+        <artifactId>templateapp</artifactId>
         <version>1.0.0</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
@@ -13,7 +13,7 @@
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
-    <description>API for appweb.lowerappname</description>
+    <description>API for templateapp</description>
 
     <properties>
         <java.version>21</java.version>
@@ -93,7 +93,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>appweb.groupid</groupId>
+            <groupId>com.templateapp</groupId>
             <artifactId>api</artifactId>
             <version>${project.version}</version>
         </dependency>

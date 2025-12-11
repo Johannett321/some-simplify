@@ -73,7 +73,7 @@ export function Sidebar({open, onClose}: SidebarProps) {
                                 <Calculator className="h-5 w-5 text-white"/>
                             </div>
                             <div>
-                                <h2 className="font-bold text-gray-900 text-left">appweb.appname</h2>
+                                <h2 className="font-bold text-gray-900 text-left">TemplateApp</h2>
                                 <p className="text-xs text-gray-500">{tenant?.name}</p>
                             </div>
                         </div>

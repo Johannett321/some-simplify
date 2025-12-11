@@ -11,13 +11,13 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>appweb.groupid</groupId>
-    <artifactId>appweb.lowerappname</artifactId>
+    <groupId>com.templateapp</groupId>
+    <artifactId>templateapp</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
     <name>${project.artifactId}-${project.version}</name>
-    <description>appweb.lowerappname</description>
+    <description>templateapp</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -31,7 +31,7 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>appweb.groupid</groupId>
+                <groupId>com.templateapp</groupId>
                 <artifactId>backend</artifactId>
                 <version>${project.version}</version>
                 <type>ejb</type>

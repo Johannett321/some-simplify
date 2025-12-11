@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>appweb.groupid</groupId>
-        <artifactId>appweb.lowerappname</artifactId>
+        <groupId>com.templateapp</groupId>
+        <artifactId>templateapp</artifactId>
         <version>1.0.0</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
@@ -13,7 +13,7 @@
     <artifactId>api</artifactId>
     <packaging>jar</packaging>
 
-    <name>appweb.lowerappname-api</name>
+    <name>templateapp-api</name>
     <description>OpenAPI generated API interfaces</description>
 
     <dependencies>
@@ -104,8 +104,8 @@
                             <inputSpec>${project.basedir}/src/main/resources/api.yaml</inputSpec>
                             <generatorName>spring</generatorName>
                             <output>target/generated-sources/openapi</output>
-                            <apiPackage>appweb.groupid.api</apiPackage>
-                            <modelPackage>appweb.groupid.model</modelPackage>
+                            <apiPackage>com.templateapp.api</apiPackage>
+                            <modelPackage>com.templateapp.model</modelPackage>
                             <configOptions>
                                 <interfaceOnly>true</interfaceOnly>
                                 <useTags>true</useTags>
