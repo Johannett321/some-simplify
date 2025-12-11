@@ -26,9 +26,6 @@ public class User {
     private String firstName;
     private String lastName;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Tenant currentTenant;
-
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<ApplicationRole> applicationRoles;
 }
