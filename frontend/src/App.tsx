@@ -4,6 +4,7 @@ import {RegisterPage} from "./components/auth/RegisterPage.tsx";
 import MainLayout from "./layouts/MainLayout.tsx";
 import DashboardPage from "./components/DashboardPage.tsx";
 import {LoginPage} from "@/components/auth/LoginPage.tsx";
+import {CreateTenantPage} from "@/components/auth/CreateTenantPage.tsx";
 import {Toaster} from "@/components/ui/sonner.tsx";
 import {useState} from "react";
 import SplashScreen from "@/components/SplashScreen.tsx";
@@ -24,6 +25,7 @@ function App() {
                     </Route>
                     <Route path={"/register"} element={<RegisterPage />} />
                     <Route path={"/login"} element={<LoginPage />} />
+                    <Route path={"/opprett-foretak"} element={<CreateTenantPage />} />
                 </Routes>
             </BrowserRouter>
         </>
