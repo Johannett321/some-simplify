@@ -8,7 +8,7 @@ import {type TenantTO} from "@/api";
 
 interface TenantPickerPageProps {
     tenants: TenantTO[]
-    onSelectTenant: (organization: TenantTO) => void
+    onSelectTenant: (tenant: TenantTO) => void
 }
 
 export const TenantPickerPage = ({tenants, onSelectTenant}: TenantPickerPageProps) => {

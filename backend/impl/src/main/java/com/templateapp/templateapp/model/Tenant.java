@@ -32,4 +32,14 @@ public class Tenant {
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<User> users;
+
+    @PrePersist
+    public void prePersist() {
+        createdAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
 }
