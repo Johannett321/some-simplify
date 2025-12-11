@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.templateapp</groupId>
-        <artifactId>templateapp</artifactId>
+        <groupId>com.somesimplify</groupId>
+        <artifactId>somesimplify</artifactId>
         <version>1.0.0</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
@@ -13,7 +13,7 @@
     <artifactId>api</artifactId>
     <packaging>jar</packaging>
 
-    <name>templateapp-api</name>
+    <name>somesimplify-api</name>
     <description>OpenAPI generated API interfaces</description>
 
     <dependencies>
@@ -104,8 +104,8 @@
                             <inputSpec>${project.basedir}/src/main/resources/api.yaml</inputSpec>
                             <generatorName>spring</generatorName>
                             <output>target/generated-sources/openapi</output>
-                            <apiPackage>com.templateapp.api</apiPackage>
-                            <modelPackage>com.templateapp.model</modelPackage>
+                            <apiPackage>com.somesimplify.api</apiPackage>
+                            <modelPackage>com.somesimplify.model</modelPackage>
                             <configOptions>
                                 <interfaceOnly>true</interfaceOnly>
                                 <useTags>true</useTags>

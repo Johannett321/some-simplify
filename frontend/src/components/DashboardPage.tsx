@@ -5,7 +5,7 @@ export const DashboardPage = () => {
     return (
         <div className={"flex flex-col"}>
             <div className={"text-2xl font-bold"}>
-                Welcome to <span className={"text-accent"}>TemplateApp</span>
+                Welcome to <span className={"text-accent"}>SOMESimplify</span>
             </div>
             <div className={"text-base mb-2"}>
                 Current tenant: {tenant?.name || 'none'}

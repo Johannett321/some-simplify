@@ -11,13 +11,13 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.templateapp</groupId>
-    <artifactId>templateapp</artifactId>
+    <groupId>com.somesimplify</groupId>
+    <artifactId>somesimplify</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
     <name>${project.artifactId}-${project.version}</name>
-    <description>templateapp</description>
+    <description>somesimplify</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -31,7 +31,7 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.templateapp</groupId>
+                <groupId>com.somesimplify</groupId>
                 <artifactId>backend</artifactId>
                 <version>${project.version}</version>
                 <type>ejb</type>

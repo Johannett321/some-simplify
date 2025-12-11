@@ -3,15 +3,15 @@ version: '3.8'
 services:
   db:
     image: postgres:16
-    container_name: templateapp-db
+    container_name: somesimplify-db
     environment:
-      POSTGRES_USER: templateappuser
+      POSTGRES_USER: somesimplifyuser
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: templateappdb
+      POSTGRES_DB: somesimplifydb
     volumes:
-      - templateapp_data:/var/lib/postgresql/data
+      - somesimplify_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
 
 volumes:
-  templateapp_data:
+  somesimplify_data:

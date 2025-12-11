@@ -1,11 +1,11 @@
 openapi: 3.0.0
 info:
-  description: API for TemplateApp
+  description: API for SOMESimplify
   version: 1.0.0
-  title: TemplateApp API
+  title: SOMESimplify API
   contact:
     name: Johan Svartdal
-    url: https://www.templateapp.com
+    url: https://www.somesimplify.com
     email: johan.svartdal30@gmail.com
 paths:
   # authApi

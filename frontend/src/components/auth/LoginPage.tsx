@@ -9,7 +9,7 @@ export const LoginPage = () => {
                 <div className="flex items-center justify-center p-8 bg-white dark:bg-gray-950">
                     <div className="w-full max-w-md space-y-6">
                         <h2 className="text-3xl font-bold">Logg inn</h2>
-                        <p className="text-muted-foreground text-sm">Logg inn på din TemplateApp konto</p>
+                        <p className="text-muted-foreground text-sm">Logg inn på din SOMESimplify konto</p>
                         <LoginForm />
                     </div>
                 </div>
