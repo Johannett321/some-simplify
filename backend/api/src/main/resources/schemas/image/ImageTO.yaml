@@ -1,0 +1,30 @@
+type: object
+properties:
+  id:
+    type: string
+  fileName:
+    type: string
+  contentType:
+    type: string
+  fileSize:
+    type: integer
+    format: int64
+  url:
+    type: string
+    description: Pre-signed URL for accessing the image
+  uploadedBy:
+    type: string
+  createdAt:
+    type: string
+    format: date-time
+  updatedAt:
+    type: string
+    format: date-time
+required:
+  - id
+  - fileName
+  - contentType
+  - fileSize
+  - url
+  - uploadedBy
+  - createdAt

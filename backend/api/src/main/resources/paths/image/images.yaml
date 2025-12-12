@@ -1,0 +1,57 @@
+get:
+  summary: Get all images for the current user
+  operationId: getUserImages
+  tags:
+    - Image
+  responses:
+    '200':
+      description: List of images
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../schemas/image/ImageTO.yaml'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/ErrorResponseTO.yaml'
+
+post:
+  summary: Upload a new image
+  operationId: uploadImage
+  tags:
+    - Image
+  requestBody:
+    required: true
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          properties:
+            file:
+              type: string
+              format: binary
+          required:
+            - file
+  responses:
+    '200':
+      description: Image uploaded successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/image/ImageTO.yaml'
+    '400':
+      description: Invalid file
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/ErrorResponseTO.yaml'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/ErrorResponseTO.yaml'

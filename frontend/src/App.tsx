@@ -9,6 +9,7 @@ import {Toaster} from "@/components/ui/sonner.tsx";
 import {useState} from "react";
 import SplashScreen from "@/components/SplashScreen.tsx";
 import axios from "axios";
+import MittInnholdPage from "@/components/MittInnholdPage.tsx";
 
 function App() {
     axios.defaults.withCredentials = true
@@ -22,6 +23,7 @@ function App() {
                 <Routes>
                     <Route path={"/"} element={< MainLayout/>} >
                         <Route path={"/"} element={<DashboardPage />} />
+                        <Route path={"/mitt-innhold"} element={<MittInnholdPage />} />
                     </Route>
                     <Route path={"/register"} element={<RegisterPage />} />
                     <Route path={"/login"} element={<LoginPage />} />

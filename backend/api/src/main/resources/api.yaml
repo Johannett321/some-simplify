@@ -25,3 +25,9 @@ paths:
     $ref: './paths/tenant/tenants.yaml'
   '/tenants/{id}':
     $ref: './paths/tenant/tenant.yaml'
+
+  # imageApi
+  '/images':
+    $ref: './paths/image/images.yaml'
+  '/images/{id}':
+    $ref: './paths/image/image.yaml'

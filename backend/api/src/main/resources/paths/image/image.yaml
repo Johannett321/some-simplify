@@ -1,0 +1,45 @@
+get:
+  summary: Get a specific image by ID
+  operationId: getImageById
+  tags:
+    - Image
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Image details
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/image/ImageTO.yaml'
+    '404':
+      description: Image not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/ErrorResponseTO.yaml'
+
+delete:
+  summary: Delete an image
+  operationId: deleteImage
+  tags:
+    - Image
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: Image deleted successfully
+    '404':
+      description: Image not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/ErrorResponseTO.yaml'
