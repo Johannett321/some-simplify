@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { ImageApi, ImageTO } from '@/api'
+import {ImageApi, type ImageTO} from '@/api'
 import apiConfig from '@/config/ApiConfig'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'

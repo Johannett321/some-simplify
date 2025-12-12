@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { ImageApi, ImageTO } from '@/api'
+import { ImageApi, type ImageTO } from '@/api'
 import apiConfig from '@/config/ApiConfig'
 import { ImageUploadForm } from './ImageUploadForm'
 import { ImageGrid } from './ImageGrid'

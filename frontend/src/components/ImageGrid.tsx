@@ -1,4 +1,4 @@
-import { ImageTO } from '@/api'
+import { type ImageTO } from '@/api'
 import { ImageCard } from './ImageCard'
 
 interface ImageGridProps {
