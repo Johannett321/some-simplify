@@ -45,22 +45,27 @@ public class ImageService {
 
         User currentUser = userService.getCurrentUser();
 
-        // Upload to S3
+        // Upload original to S3
         String s3Key = s3Service.uploadFile(file, currentUser.getId());
+
+        // Generate and upload thumbnail
+        String thumbnailS3Key = s3Service.uploadThumbnail(file, currentUser.getId());
 
         // Create database record
         Image image = new Image();
         image.setFileName(file.getOriginalFilename());
         image.setS3Key(s3Key);
+        image.setThumbnailS3Key(thumbnailS3Key);
         image.setContentType(file.getContentType());
         image.setFileSize(file.getSize());
         image.setUploadedBy(currentUser);
 
         image = imageRepository.save(image);
 
-        // Convert to TO with pre-signed URL
+        // Convert to TO with pre-signed URLs
         ImageTO imageTO = imageMapper.toImageTO(image);
         imageTO.setUrl(s3Service.generatePresignedUrl(s3Key));
+        imageTO.setThumbnailUrl(s3Service.generatePresignedUrl(thumbnailS3Key));
 
         log.info("User {} uploaded image {}", currentUser.getId(), image.getId());
         return imageTO;
@@ -77,6 +82,7 @@ public class ImageService {
                 .map(image -> {
                     ImageTO imageTO = imageMapper.toImageTO(image);
                     imageTO.setUrl(s3Service.generatePresignedUrl(image.getS3Key()));
+                    imageTO.setThumbnailUrl(s3Service.generatePresignedUrl(image.getThumbnailS3Key()));
                     return imageTO;
                 })
                 .toList();
@@ -92,6 +98,7 @@ public class ImageService {
 
         ImageTO imageTO = imageMapper.toImageTO(image);
         imageTO.setUrl(s3Service.generatePresignedUrl(image.getS3Key()));
+        imageTO.setThumbnailUrl(s3Service.generatePresignedUrl(image.getThumbnailS3Key()));
         return imageTO;
     }
 
@@ -104,8 +111,9 @@ public class ImageService {
         Image image = imageRepository.findByIdAndUploadedBy(id, currentUser)
                 .orElseThrow(() -> new ResourceNotFoundException("Image not found"));
 
-        // Delete from S3
+        // Delete from S3 (both original and thumbnail)
         s3Service.deleteFile(image.getS3Key());
+        s3Service.deleteFile(image.getThumbnailS3Key());
 
         // Delete from database
         imageRepository.delete(image);

@@ -24,6 +24,9 @@ public class Image {
     @Column(nullable = false, unique = true)
     private String s3Key;
 
+    @Column(nullable = false, unique = true)
+    private String thumbnailS3Key;
+
     @Column(nullable = false)
     private String contentType;
 

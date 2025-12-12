@@ -12,6 +12,9 @@ properties:
   url:
     type: string
     description: Pre-signed URL for accessing the image
+  thumbnailUrl:
+    type: string
+    description: Pre-signed URL for accessing the thumbnail
   uploadedBy:
     type: string
   createdAt:
@@ -26,5 +29,6 @@ required:
   - contentType
   - fileSize
   - url
+  - thumbnailUrl
   - uploadedBy
   - createdAt

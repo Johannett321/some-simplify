@@ -14,6 +14,7 @@ public interface ImageMapper {
 
     @Mapping(target = "uploadedBy", source = "uploadedBy.id")
     @Mapping(target = "url", ignore = true)
+    @Mapping(target = "thumbnailUrl", ignore = true)
     ImageTO toImageTO(Image image);
 
     default OffsetDateTime map(LocalDateTime value) {

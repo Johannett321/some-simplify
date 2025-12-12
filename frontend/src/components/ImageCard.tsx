@@ -52,7 +52,7 @@ export const ImageCard = ({ image, onDelete }: ImageCardProps) => {
                         </div>
                     )}
                     <img
-                        src={image.url}
+                        src={image.thumbnailUrl}
                         alt={image.fileName}
                         className="w-full h-full object-cover"
                         onLoad={() => setImageLoading(false)}
