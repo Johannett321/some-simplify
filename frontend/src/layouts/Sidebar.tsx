@@ -14,7 +14,7 @@ interface SidebarProps {
 
 const navigation = [
     {name: 'Innholdskalender', href: '/', icon: Calendar1Icon},
-    {name: 'Mitt inhold', href: '/annet1', icon: ImagesIcon},
+    {name: 'Mitt innhold', href: '/annet1', icon: ImagesIcon},
 ]
 
 export function Sidebar({open, onClose}: SidebarProps) {
