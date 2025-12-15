@@ -18,8 +18,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.MimeTypeUtils;
 
 import java.net.URI;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -57,9 +62,9 @@ public class PostService {
                 som sender deg melding jobber i restaurantbransjen og representerer en restaturant. Når en bruker sender deg et bilde,
                 skriver du en tekst som passer til dette bildet og som restauranten kan bruke som tekst til innlegget.
                 Målet er å skrive en engasjerende tekst som får brukerne til å klikke på CTA.
-                
+
                 CTA er denne linken: {ctalink}. Den går til bordbookingssiden til restauranten.
-                
+
                 Ditt svar på denne meldingen blir lagt rett ut på {platform}, så ikke skriv noen forklaring eller noe først. Gå rett på sak.
                 Skriv på norsk.
                 """;
@@ -78,5 +83,78 @@ public class PostService {
                 .build();
 
         return chatModel.call(systemPrompt.getSystemMessage(), userMessage);
+    }
+
+    public List<Post> getPosts(LocalDate fromDate, LocalDate toDate, PostStatus status) {
+        List<Post> posts = postRepository.findAll();
+
+        return posts.stream()
+                .filter(post -> {
+                    if (status != null && post.getStatus() != status) {
+                        return false;
+                    }
+
+                    if (post.getPublishAt() == null) {
+                        return status == PostStatus.DRAFT;
+                    }
+
+                    LocalDate postDate = post.getPublishAt().toLocalDate();
+
+                    if (fromDate != null && postDate.isBefore(fromDate)) {
+                        return false;
+                    }
+
+                    if (toDate != null && postDate.isAfter(toDate)) {
+                        return false;
+                    }
+
+                    return true;
+                })
+                .toList();
+    }
+
+    public Post getPostById(String id) {
+        return postRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Post not found"));
+    }
+
+    @Transactional
+    public Post updatePost(String id, OffsetDateTime publishAt, PostStatus status) {
+        Post post = getPostById(id);
+
+        if (publishAt != null) {
+            post.setPublishAt(publishAt);
+        }
+
+        if (status != null) {
+            post.setStatus(status);
+        }
+
+        return postRepository.save(post);
+    }
+
+    public OffsetDateTime getSuggestedPublishDate() {
+        List<Post> scheduledPosts = postRepository.findAll().stream()
+                .filter(post -> post.getPublishAt() != null)
+                .filter(post -> post.getStatus() == PostStatus.SCHEDULED || post.getStatus() == PostStatus.PUBLISHED)
+                .sorted(Comparator.comparing(Post::getPublishAt).reversed())
+                .toList();
+
+        if (scheduledPosts.isEmpty()) {
+            // If no posts are scheduled, suggest tomorrow
+            return OffsetDateTime.now(ZoneOffset.UTC).plusDays(1).withHour(12).withMinute(0).withSecond(0).withNano(0);
+        }
+
+        OffsetDateTime lastScheduledDate = scheduledPosts.get(0).getPublishAt();
+        OffsetDateTime suggestedDate = lastScheduledDate.plusDays(3);
+
+        // Make sure the suggested date is not in the past
+        OffsetDateTime now = OffsetDateTime.now(ZoneOffset.UTC);
+        if (suggestedDate.isBefore(now)) {
+            suggestedDate = now.plusDays(1);
+        }
+
+        // Set time to noon
+        return suggestedDate.withHour(12).withMinute(0).withSecond(0).withNano(0);
     }
 }

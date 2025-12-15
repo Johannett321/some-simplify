@@ -10,6 +10,7 @@ import {useState} from "react";
 import SplashScreen from "@/components/SplashScreen.tsx";
 import axios from "axios";
 import MittInnholdPage from "@/components/MittInnholdPage.tsx";
+import SchedulePostsPage from "@/components/SchedulePostsPage.tsx";
 
 function App() {
     axios.defaults.withCredentials = true
@@ -25,6 +26,7 @@ function App() {
                     <Route path={"/"} element={< MainLayout/>} >
                         <Route path={"/"} element={<DashboardPage />} />
                         <Route path={"/mitt-innhold"} element={<MittInnholdPage />} />
+                        <Route path={"/schedule-posts"} element={<SchedulePostsPage />} />
                     </Route>
                     <Route path={"/register"} element={<RegisterPage />} />
                     <Route path={"/login"} element={<LoginPage />} />

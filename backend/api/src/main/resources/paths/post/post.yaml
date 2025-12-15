@@ -18,3 +18,31 @@ get:
             $ref: '../../schemas/post/PostTO.yaml'
     404:
       description: Post not found
+
+put:
+  summary: Update a post
+  operationId: updatePost
+  tags:
+    - Post
+  parameters:
+    - in: path
+      name: id
+      required: true
+      description: The id of the post to update
+      schema:
+        type: string
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../schemas/post/UpdatePostCommand.yaml'
+  responses:
+    200:
+      description: Post updated successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/post/PostTO.yaml'
+    404:
+      description: Post not found

@@ -37,3 +37,5 @@ paths:
     $ref: './paths/post/posts.yaml'
   '/posts/{id}':
     $ref: './paths/post/post.yaml'
+  '/posts/suggested-publish-date':
+    $ref: './paths/post/suggested-publish-date.yaml'

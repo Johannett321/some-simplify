@@ -16,6 +16,11 @@ get:
       schema:
         type: string
         format: date
+    - in: query
+      name: status
+      required: false
+      schema:
+        $ref: '../../schemas/post/PostStatus.yaml'
   responses:
     200:
       description: All the posts that match the query params. All posts if no query params are specified
