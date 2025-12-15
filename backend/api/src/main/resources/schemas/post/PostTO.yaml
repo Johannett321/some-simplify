@@ -13,3 +13,7 @@ properties:
       $ref: './PlatformType.yaml'
   status:
     $ref: './PostStatus.yaml'
+  contentFiles:
+    type: array
+    items:
+      $ref: '../image/ImageTO.yaml'

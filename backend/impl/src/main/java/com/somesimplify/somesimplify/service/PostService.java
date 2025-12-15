@@ -119,8 +119,12 @@ public class PostService {
     }
 
     @Transactional
-    public Post updatePost(String id, OffsetDateTime publishAt, PostStatus status) {
+    public Post updatePost(String id, String text, OffsetDateTime publishAt, PostStatus status) {
         Post post = getPostById(id);
+
+        if (text != null) {
+            post.setText(text);
+        }
 
         if (publishAt != null) {
             post.setPublishAt(publishAt);

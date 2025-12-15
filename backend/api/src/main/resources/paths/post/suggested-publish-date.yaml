@@ -1,0 +1,16 @@
+get:
+  summary: Get suggested next available publish date
+  operationId: getSuggestedPublishDate
+  tags:
+    - Post
+  responses:
+    200:
+      description: Suggested publish date (at least 3 days after last scheduled post)
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              suggestedDate:
+                type: string
+                format: date-time

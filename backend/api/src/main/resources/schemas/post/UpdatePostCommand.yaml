@@ -1,0 +1,9 @@
+type: object
+properties:
+  text:
+    type: string
+  publishAt:
+    type: string
+    format: date-time
+  status:
+    $ref: './PostStatus.yaml'

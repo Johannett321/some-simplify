@@ -45,11 +45,17 @@ export const DashboardPage = () => {
     }
 
     const getPostsForDate = (date: Date): PostTO[] => {
-        return posts.filter(post => {
-            if (!post.publishAt) return false
-            const postDate = new Date(post.publishAt)
-            return postDate.toDateString() === date.toDateString()
-        })
+        return posts
+            .filter(post => {
+                if (!post.publishAt) return false
+                const postDate = new Date(post.publishAt)
+                return postDate.toDateString() === date.toDateString()
+            })
+            .sort((a, b) => {
+                const timeA = new Date(a.publishAt!).getTime()
+                const timeB = new Date(b.publishAt!).getTime()
+                return timeA - timeB
+            })
     }
 
     const renderCalendar = () => {
@@ -76,37 +82,61 @@ export const DashboardPage = () => {
             const postsForDay = getPostsForDate(date)
             const isToday = date.toDateString() === new Date().toDateString()
 
+            const isPast = date < new Date(new Date().setHours(0, 0, 0, 0))
+
             days.push(
                 <div
                     key={day}
-                    className={`h-32 border border-gray-200 p-2 hover:bg-gray-50 cursor-pointer transition-colors ${
-                        isToday ? 'bg-blue-50' : 'bg-white'
+                    className={`h-32 border border-gray-200 p-2 transition-colors ${
+                        isPast
+                            ? 'bg-gray-100 cursor-not-allowed opacity-60'
+                            : isToday
+                            ? 'bg-blue-50 hover:bg-blue-100 cursor-pointer'
+                            : 'bg-white hover:bg-gray-50 cursor-pointer'
                     }`}
                     onClick={() => {
-                        if (postsForDay.length === 0) {
-                            navigate('/schedule-posts')
+                        if (!isPast) {
+                            const dateStr = date.toISOString().split('T')[0]
+                            navigate(`/schedule-posts?date=${dateStr}`)
                         }
                     }}
                 >
-                    <div className={`text-sm font-semibold mb-1 ${isToday ? 'text-blue-600' : 'text-gray-900'}`}>
+                    <div className={`text-sm font-semibold mb-1 ${isToday ? 'text-blue-600' : isPast ? 'text-gray-400' : 'text-gray-900'}`}>
                         {day}
                     </div>
                     <div className="space-y-1 overflow-y-auto max-h-20">
-                        {postsForDay.map((post) => (
-                            <div
-                                key={post.id}
-                                className={`text-xs p-1 rounded truncate ${
-                                    post.status === PostStatus.Scheduled
-                                        ? 'bg-blue-100 text-blue-800'
-                                        : post.status === PostStatus.Published
-                                        ? 'bg-green-100 text-green-800'
-                                        : 'bg-gray-100 text-gray-800'
-                                }`}
-                                title={post.text || 'Ingen tekst'}
-                            >
-                                {post.text?.substring(0, 30) || 'Ingen tekst'}
-                            </div>
-                        ))}
+                        {postsForDay.map((post) => {
+                            const timeStr = post.publishAt
+                                ? new Date(post.publishAt).toLocaleTimeString('nb-NO', {
+                                      hour: '2-digit',
+                                      minute: '2-digit',
+                                  })
+                                : ''
+                            return (
+                                <div
+                                    key={post.id}
+                                    className={`text-xs p-1 rounded truncate hover:opacity-80 ${
+                                        post.status === PostStatus.Scheduled
+                                            ? 'bg-blue-100 text-blue-800'
+                                            : post.status === PostStatus.Published
+                                            ? 'bg-green-100 text-green-800'
+                                            : 'bg-gray-100 text-gray-800'
+                                    }`}
+                                    title={`${timeStr} - ${post.text || 'Ingen tekst'}`}
+                                    onClick={(e) => {
+                                        e.stopPropagation()
+                                        navigate(`/schedule-posts/${post.id}`)
+                                    }}
+                                >
+                                    <div className="flex justify-between items-center gap-1">
+                                        <span className="font-semibold">{timeStr}</span>
+                                        <span className="truncate flex-1">
+                                            {post.text?.substring(0, 20) || 'Ingen tekst'}
+                                        </span>
+                                    </div>
+                                </div>
+                            )
+                        })}
                     </div>
                 </div>
             )

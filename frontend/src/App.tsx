@@ -27,6 +27,7 @@ function App() {
                         <Route path={"/"} element={<DashboardPage />} />
                         <Route path={"/mitt-innhold"} element={<MittInnholdPage />} />
                         <Route path={"/schedule-posts"} element={<SchedulePostsPage />} />
+                        <Route path={"/schedule-posts/:postId"} element={<SchedulePostsPage />} />
                     </Route>
                     <Route path={"/register"} element={<RegisterPage />} />
                     <Route path={"/login"} element={<LoginPage />} />
