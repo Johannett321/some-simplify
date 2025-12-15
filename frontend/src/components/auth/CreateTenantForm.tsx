@@ -1,8 +1,8 @@
 import {useForm} from 'react-hook-form'
 import {Button} from '@/components/ui/button'
 import {Input} from '@/components/ui/input'
-import {Link, useNavigate} from "react-router-dom";
-import {TenantApi, type ErrorResponseTO} from "@/api";
+import {Link} from "react-router-dom";
+import {type ErrorResponseTO, TenantApi} from "@/api";
 import {useState} from "react";
 import apiConfig from "@/config/ApiConfig.ts";
 import {Alert, AlertTitle} from "@/components/ui/alert.tsx";
@@ -19,7 +19,6 @@ export function CreateTenantForm() {
     const [tenantApi] = useState<TenantApi>(new TenantApi(apiConfig))
     const [error, setError] = useState<ErrorResponseTO | undefined>(undefined)
     const [isSubmitting, setIsSubmitting] = useState(false)
-    const navigate = useNavigate()
 
     const onSubmit = async (data: FormValues) => {
         setIsSubmitting(true)

@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react'
-import { PostApi, type PostTO, PostStatus } from '@/api'
-import apiConfig from '@/config/ApiConfig'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Calendar, Check, X, ChevronLeft, ChevronRight, Lock } from 'lucide-react'
-import { toast } from 'sonner'
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
-import { EmptyState } from './EmptyState'
-import { Textarea } from '@/components/ui/textarea'
-import { Alert, AlertDescription } from '@/components/ui/alert'
+import {useEffect, useState} from 'react'
+import {PostApi, PostStatus, type PostTO} from '@/api'
+import apiConfig from '@/config/ApiConfig.ts'
+import {Button} from '@/components/ui/button.tsx'
+import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from '@/components/ui/card.tsx'
+import {ArrowLeftIcon, Check, ChevronLeft, ChevronRight, HourglassIcon, Lock, X} from 'lucide-react'
+import {toast} from 'sonner'
+import {useNavigate, useParams, useSearchParams} from 'react-router-dom'
+import {EmptyState} from '../components/EmptyState.tsx'
+import {Textarea} from '@/components/ui/textarea.tsx'
+import {Alert, AlertDescription} from '@/components/ui/alert.tsx'
 
 export const SchedulePostsPage = () => {
     const navigate = useNavigate()
@@ -213,19 +213,21 @@ export const SchedulePostsPage = () => {
     if (mode === 'batch' && unscheduledPosts.length === 0) {
         return (
             <div className="space-y-6">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-5">
+                    <button
+                        className={"cursor-pointer"}
+                        onClick={() => navigate('/')}>
+                        <ArrowLeftIcon />
+                    </button>
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900">Planlegg innlegg</h1>
                         <p className="mt-2 text-gray-600">Godkjenn og planlegg dine sosiale medier innlegg</p>
                     </div>
-                    <Button variant="outline" onClick={() => navigate('/')}>
-                        Tilbake til kalender
-                    </Button>
                 </div>
                 <EmptyState
-                    icon={Calendar}
-                    title="Ingen uplanlagte innlegg"
-                    description="Alle dine innlegg er allerede planlagt eller det finnes ingen innlegg ennå"
+                    icon={HourglassIcon}
+                    title="Ingen flere forslag i dag"
+                    description="SOMESimplify lager forslag på natten. Du vil få flere forslag i morgen. I mellomtiden kan du laste opp bilder på Mitt innhold siden."
                     action={
                         <Button onClick={() => navigate('/mitt-innhold')}>
                             Gå til mitt innhold
@@ -244,7 +246,12 @@ export const SchedulePostsPage = () => {
 
     return (
         <div className="space-y-6 max-w-4xl mx-auto">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-5">
+                <button
+                    className={"cursor-pointer"}
+                    onClick={() => navigate('/')}>
+                    <ArrowLeftIcon />
+                </button>
                 <div>
                     <h1 className="text-3xl font-bold text-gray-900">
                         {mode === 'single' ? 'Rediger innlegg' : 'Planlegg innlegg'}
@@ -256,9 +263,6 @@ export const SchedulePostsPage = () => {
                         }
                     </p>
                 </div>
-                <Button variant="outline" onClick={() => navigate('/')}>
-                    Tilbake til kalender
-                </Button>
             </div>
 
             {isPublished && (

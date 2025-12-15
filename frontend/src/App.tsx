@@ -2,15 +2,15 @@ import './App.css'
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {RegisterPage} from "./components/auth/RegisterPage.tsx";
 import MainLayout from "./layouts/MainLayout.tsx";
-import DashboardPage from "./components/DashboardPage.tsx";
+import DashboardPage from "./pages/DashboardPage.tsx";
 import {LoginPage} from "@/components/auth/LoginPage.tsx";
 import {CreateTenantPage} from "@/components/auth/CreateTenantPage.tsx";
 import {Toaster} from "@/components/ui/sonner.tsx";
 import {useState} from "react";
 import SplashScreen from "@/components/SplashScreen.tsx";
 import axios from "axios";
-import MittInnholdPage from "@/components/MittInnholdPage.tsx";
-import SchedulePostsPage from "@/components/SchedulePostsPage.tsx";
+import MittInnholdPage from "@/pages/MittInnholdPage.tsx";
+import SchedulePostsPage from "@/pages/SchedulePostsPage.tsx";
 
 function App() {
     axios.defaults.withCredentials = true

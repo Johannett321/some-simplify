@@ -1,5 +1,5 @@
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card.tsx";
-import {Item, ItemActions, ItemContent, ItemDescription, ItemTitle} from "@/components/ui/item.tsx";
+import {Item, ItemActions, ItemContent, ItemTitle} from "@/components/ui/item.tsx";
 import {ChevronRightIcon} from "lucide-react";
 import {Button} from "@/components/ui/button.tsx";
 import {Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyTitle} from "@/components/ui/empty.tsx";
@@ -33,7 +33,6 @@ export const TenantPickerPage = ({tenants, onSelectTenant}: TenantPickerPageProp
                                 >
                                     <ItemContent>
                                         <ItemTitle>{o.name}</ItemTitle>
-                                        <ItemDescription>{o.orgNumber} {o.city}</ItemDescription>
                                     </ItemContent>
                                     <ItemActions>
                                         <ChevronRightIcon className="size-4" />
