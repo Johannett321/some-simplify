@@ -21,7 +21,7 @@ public class GeneratePostsJob {
     private final PostService postService;
 
     //@Scheduled(cron = "0 30 3 * * *")
-    @Scheduled(cron = "0 30 3 * * *")
+    @Scheduled(fixedRate = 1000*60*60*24)
     public void run() {
         LocalDateTime now = LocalDateTime.now();
         log.info("Start generating posts job");
@@ -34,7 +34,7 @@ public class GeneratePostsJob {
         tenants.forEach(tenant -> {
             log.info("Generating posts for tenant {}", tenant.getName());
             TenantContext.setTenantId(tenant.getId());
-            postService.generatePosts(tenant);
+            postService.generatePosts(tenant.getId());
         });
     }
 }

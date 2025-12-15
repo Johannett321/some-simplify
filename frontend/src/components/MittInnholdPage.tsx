@@ -89,7 +89,7 @@ export const MittInnholdPage = () => {
 
             files.forEach(file => {
                 if (!allowedTypes.includes(file.type)) {
-                    toast.error(`${file.name}: Kun JPG, PNG, GIF og WebP er tillatt`)
+                    toast.error(`${file.name}: Kun JPG, PNG, GIF og WebP er tillatt. Ikke ` + file.type)
                     return
                 }
 
