@@ -1,0 +1,18 @@
+type: object
+properties:
+  id:
+    type: string
+  platform:
+    $ref: '../post/PlatformType.yaml'
+  accountName:
+    type: string
+  isActive:
+    type: boolean
+  lastPublishedAt:
+    type: string
+    format: date-time
+  tokenExpiresAt:
+    type: string
+    format: date-time
+  lastError:
+    type: string

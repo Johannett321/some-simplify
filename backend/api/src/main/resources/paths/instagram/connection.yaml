@@ -1,0 +1,23 @@
+get:
+  summary: Get Instagram connection status
+  operationId: getInstagramConnection
+  tags:
+    - instagram
+  responses:
+    '200':
+      description: Connection status
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/integration/SocialMediaConnectionTO.yaml'
+    '404':
+      description: No connection found
+
+delete:
+  summary: Disconnect Instagram
+  operationId: disconnectInstagram
+  tags:
+    - instagram
+  responses:
+    '204':
+      description: Disconnected successfully

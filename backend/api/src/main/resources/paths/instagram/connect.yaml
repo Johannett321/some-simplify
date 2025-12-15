@@ -1,0 +1,15 @@
+get:
+  summary: Get Instagram OAuth authorization URL
+  operationId: getInstagramAuthUrl
+  tags:
+    - instagram
+  responses:
+    '200':
+      description: Authorization URL
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              authUrl:
+                type: string

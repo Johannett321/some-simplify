@@ -11,6 +11,7 @@ import SplashScreen from "@/components/SplashScreen.tsx";
 import axios from "axios";
 import MittInnholdPage from "@/pages/MittInnholdPage.tsx";
 import SchedulePostsPage from "@/pages/SchedulePostsPage.tsx";
+import {SettingsPage} from "@/pages/SettingsPage.tsx";
 
 function App() {
     axios.defaults.withCredentials = true
@@ -28,6 +29,7 @@ function App() {
                         <Route path={"/mitt-innhold"} element={<MittInnholdPage />} />
                         <Route path={"/schedule-posts"} element={<SchedulePostsPage />} />
                         <Route path={"/schedule-posts/:postId"} element={<SchedulePostsPage />} />
+                        <Route path={"/settings"} element={<SettingsPage />} />
                     </Route>
                     <Route path={"/register"} element={<RegisterPage />} />
                     <Route path={"/login"} element={<LoginPage />} />

@@ -53,6 +53,7 @@ public class WebSecurityConfig {
                     auth.requestMatchers("/auth/**").permitAll();
                     auth.requestMatchers("/auth/login").permitAll();
                     auth.requestMatchers("/auth/register").permitAll();
+                    auth.requestMatchers("/instagram/oauth/callback").permitAll();
                     auth.requestMatchers("/public/**").permitAll();
                     auth.requestMatchers("/error").permitAll();
 

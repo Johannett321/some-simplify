@@ -39,3 +39,11 @@ paths:
     $ref: './paths/post/post.yaml'
   '/posts/suggested-publish-date':
     $ref: './paths/post/suggested-publish-date.yaml'
+
+  # instagramApi
+  '/instagram/connect':
+    $ref: './paths/instagram/connect.yaml'
+  '/instagram/oauth/callback':
+    $ref: './paths/instagram/callback.yaml'
+  '/instagram/connection':
+    $ref: './paths/instagram/connection.yaml'

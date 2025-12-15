@@ -97,6 +97,25 @@ public class S3Service {
     }
 
     /**
+     * Generate a long-lived pre-signed URL (valid for 24 hours) for Instagram
+     * Instagram needs time to fetch and process the image
+     */
+    public String generateLongLivedPresignedUrl(String s3Key) {
+        GetObjectRequest getObjectRequest = GetObjectRequest.builder()
+                .bucket(awsConfig.getS3Bucket())
+                .key(s3Key)
+                .build();
+
+        GetObjectPresignRequest presignRequest = GetObjectPresignRequest.builder()
+                .signatureDuration(Duration.ofHours(24))
+                .getObjectRequest(getObjectRequest)
+                .build();
+
+        PresignedGetObjectRequest presignedRequest = s3Presigner.presignGetObject(presignRequest);
+        return presignedRequest.url().toString();
+    }
+
+    /**
      * Delete a file from S3
      */
     public void deleteFile(String s3Key) {

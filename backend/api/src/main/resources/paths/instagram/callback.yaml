@@ -1,0 +1,19 @@
+get:
+  summary: Instagram OAuth callback
+  operationId: instagramOAuthCallback
+  tags:
+    - instagram
+  parameters:
+    - name: code
+      in: query
+      required: true
+      schema:
+        type: string
+    - name: state
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    '302':
+      description: Redirect to frontend
