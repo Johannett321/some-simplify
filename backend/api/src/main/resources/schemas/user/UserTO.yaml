@@ -12,6 +12,3 @@ properties:
   createdAt:
     type: string
     format: date-time
-  currentTenantId:
-    type: string
-    description: The ID of the Tenant that the user is logged into

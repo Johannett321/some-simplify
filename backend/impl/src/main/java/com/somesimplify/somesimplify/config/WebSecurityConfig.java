@@ -1,12 +1,12 @@
 package com.somesimplify.somesimplify.config;
 
 import com.somesimplify.somesimplify.filter.JwtAuthenticationFilter;
+import com.somesimplify.somesimplify.multitenancy.filter.TenantFilter;
 import com.somesimplify.somesimplify.service.CustomUserDetailsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -35,6 +35,9 @@ public class WebSecurityConfig {
     @Autowired
     protected CustomUserDetailsService customUserDetailsService;
 
+    @Autowired
+    protected TenantFilter tenantFilter;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
@@ -57,15 +60,7 @@ public class WebSecurityConfig {
                 })
                 .authenticationProvider(daoAuthenticationProvider())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                .build();
-    }
-
-    @Bean
-    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
-        return http.getSharedObject(AuthenticationManagerBuilder.class)
-                .userDetailsService(customUserDetailsService)
-                .passwordEncoder(new BCryptPasswordEncoder())
-                .and()
+                .addFilterBefore(tenantFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
@@ -101,4 +96,12 @@ public class WebSecurityConfig {
         return source;
     }
 
+    @Bean
+    public org.springframework.security.authentication.AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
+        return http.getSharedObject(AuthenticationManagerBuilder.class)
+                .userDetailsService(customUserDetailsService)
+                .passwordEncoder(new BCryptPasswordEncoder())
+                .and()
+                .build();
+    }
 }

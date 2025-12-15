@@ -38,6 +38,7 @@ public class PostService {
     }
 
     public void generateSinglePost(ContentFile contentFile) {
+        log.info("Lager instagram post for bilde '{}'", contentFile.getFileName());
         // choose a random post (the newer the image, the more likely it's picked)
         String text = generateTextForPost(contentFile);
         log.info(contentFile.getS3Key() + " " + text);
@@ -59,7 +60,7 @@ public class PostService {
                 
                 CTA er denne linken: {ctalink}. Den går til bordbookingssiden til restauranten.
                 
-                Ditt svar på denne meldingen blir lagt rett ut på {}, så ikke skriv noen forklaring eller noe først. Gå rett på sak.
+                Ditt svar på denne meldingen blir lagt rett ut på {platform}, så ikke skriv noen forklaring eller noe først. Gå rett på sak.
                 Skriv på norsk.
                 """;
 
@@ -73,6 +74,7 @@ public class PostService {
         UserMessage userMessage = UserMessage.builder()
                 .media(new Media(MimeTypeUtils.IMAGE_PNG,
                         URI.create(s3Service.generatePresignedUrl(contentFile.getS3Key()))))
+                .text("Kan du skrive en tekst for dette bildet vi planlegger å legge ut på Instagram?")
                 .build();
 
         return chatModel.call(systemPrompt.getSystemMessage(), userMessage);

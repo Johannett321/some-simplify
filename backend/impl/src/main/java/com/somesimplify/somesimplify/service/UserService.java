@@ -15,23 +15,18 @@ import com.somesimplify.somesimplify.repository.UserRepository;
 import com.somesimplify.somesimplify.utils.JwtUtil;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseCookie;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
@@ -47,8 +42,6 @@ public class UserService {
     private final ApplicationConfig applicationConfig;
     private final UserRepository userRepository;
     private final ApplicationRoleRepository applicationRoleRepository;
-    private final AuthenticationManager authenticationManager;
-    private final HttpServletRequest httpServletRequest;
     private final CustomUserDetailsService customUserDetailsService;
     private final JwtUtil jwtUtil;
     private final HttpServletResponse httpServletResponse;
@@ -199,39 +192,7 @@ public class UserService {
 
         log.info("Created user with email: {}", createUserCommand.getEmail());
 
-        authenticateUser(user, createUserCommand.getPassword());
-    }
-
-    private void authenticateUser(User user, String rawPassword) {
-        // Manually authenticate the user after successful registration
-        Authentication authentication = new UsernamePasswordAuthenticationToken(
-                user.getEmail(),
-                rawPassword
-        );
-
-        // Use the authentication manager to authenticate the user
-        Authentication auth = authenticationManager.authenticate(authentication);
-
-        // Set the authentication to the security context
-        SecurityContextHolder.getContext().setAuthentication(auth);
-
-        // Create a new session for the user
-        HttpSession session = httpServletRequest.getSession(true);
-        session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, SecurityContextHolder.getContext());
-
-        final UserDetails userDetails = customUserDetailsService.fromUser(user);
-
-        final String token = jwtUtil.generateToken(userDetails);
-
-        ResponseCookie cookie = ResponseCookie.from("token", token)
-                .httpOnly(true)
-                .secure(true)
-                .sameSite("Lax")
-                .path("/")
-                .maxAge(Duration.ofDays(JwtUtil.getExpirationDays()))
-                .build();
-
-        httpServletResponse.addHeader("Set-Cookie", cookie.toString());
+        authenticateUser(user);
     }
 
     /**

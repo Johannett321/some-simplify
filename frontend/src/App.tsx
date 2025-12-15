@@ -13,6 +13,7 @@ import MittInnholdPage from "@/components/MittInnholdPage.tsx";
 
 function App() {
     axios.defaults.withCredentials = true
+    axios.defaults.headers.common['X-Tenant-ID'] = localStorage.getItem("tenant");
     const [showSplash, setShowSplash] = useState(true)
 
     return (

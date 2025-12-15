@@ -22,6 +22,7 @@ public class Post extends AbstractBaseEntity {
     private String id;
     private OffsetDateTime publishAt;
 
+    @Column(columnDefinition = "text")
     private String text;
 
     @Enumerated(EnumType.STRING)
