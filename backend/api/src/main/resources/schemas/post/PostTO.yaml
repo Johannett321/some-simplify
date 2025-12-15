@@ -2,7 +2,14 @@ type: object
 properties:
   id:
     type: string
-  platformType:
-    $ref: './PlatformType.yaml'
-  postStatus:
+  text:
+    type: string
+  publishAt:
+    type: string
+    format: date-time
+  platforms:
+    type: array
+    items:
+      $ref: './PlatformType.yaml'
+  status:
     $ref: './PostStatus.yaml'
