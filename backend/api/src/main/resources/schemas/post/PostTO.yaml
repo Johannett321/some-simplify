@@ -1,0 +1,8 @@
+type: object
+properties:
+  id:
+    type: string
+  platformType:
+    $ref: './PlatformType.yaml'
+  postStatus:
+    $ref: './PostStatus.yaml'

@@ -31,3 +31,9 @@ paths:
     $ref: './paths/image/images.yaml'
   '/images/{id}':
     $ref: './paths/image/image.yaml'
+
+  # postApi
+  '/posts':
+    $ref: './paths/post/posts.yaml'
+  '/posts/{id}':
+    $ref: './paths/post/post.yaml'

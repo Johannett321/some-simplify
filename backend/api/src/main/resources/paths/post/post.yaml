@@ -1,0 +1,20 @@
+get:
+  summary: Get a specific post
+  operationId: getPost
+  tags:
+    - Post
+  parameters:
+    - in: query
+      name: id
+      description: The id of the post
+      schema:
+        type: string
+  responses:
+    200:
+      description: The requested post
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/post/PostTO.yaml'
+    404:
+      description: Post not found

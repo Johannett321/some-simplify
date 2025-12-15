@@ -1,7 +1,7 @@
 package com.somesimplify.somesimplify.mapper;
 
 import com.somesimplify.model.ImageTO;
-import com.somesimplify.somesimplify.model.Image;
+import com.somesimplify.somesimplify.model.ContentFile;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -15,7 +15,7 @@ public interface ImageMapper {
     @Mapping(target = "uploadedBy", source = "uploadedBy.id")
     @Mapping(target = "url", ignore = true)
     @Mapping(target = "thumbnailUrl", ignore = true)
-    ImageTO toImageTO(Image image);
+    ImageTO toImageTO(ContentFile contentFile);
 
     default OffsetDateTime map(LocalDateTime value) {
         return value != null ? value.atOffset(ZoneOffset.UTC) : null;

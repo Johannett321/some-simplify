@@ -1,0 +1,27 @@
+get:
+  summary: Get all posts
+  operationId: getPosts
+  tags:
+    - Post
+  parameters:
+    - in: query
+      name: fromDate
+      required: false
+      schema:
+        type: string
+        format: date
+    - in: query
+      name: toDate
+      required: false
+      schema:
+        type: string
+        format: date
+  responses:
+    200:
+      description: All the posts that match the query params. All posts if no query params are specified
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../schemas/post/PostTO.yaml'

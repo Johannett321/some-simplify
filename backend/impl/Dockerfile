@@ -1,4 +1,4 @@
-# Use official Maven image to build our Spring Boot application
+# Use official Maven contentFile to build our Spring Boot application
 FROM maven:3.9.3-amazoncorretto-20 AS build
 
 # Set the working directory

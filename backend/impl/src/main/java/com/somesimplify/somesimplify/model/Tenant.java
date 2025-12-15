@@ -17,6 +17,9 @@ public class Tenant {
     @Column(nullable = false)
     private String name;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "tenantId")
+    private List<ContentFile> contentFiles;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
