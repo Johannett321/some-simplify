@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { InstagramApi, SocialMediaConnectionTO } from '@/api';
+import { InstagramApi, type SocialMediaConnectionTO } from '@/api';
 import { apiConfig } from '@/config/ApiConfig';
 
 export function InstagramConnection() {
@@ -28,7 +28,7 @@ export function InstagramConnection() {
       const api = new InstagramApi(apiConfig);
       const response = await api.getInstagramAuthUrl();
 
-      window.location.href = response.data.authUrl;
+      window.location.href = response.data.authUrl!;
     } catch (error) {
       console.error('Failed to get auth URL:', error);
       setLoading(false);

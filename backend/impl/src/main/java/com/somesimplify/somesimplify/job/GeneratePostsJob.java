@@ -20,8 +20,8 @@ public class GeneratePostsJob {
     private final TenantRepository tenantRepository;
     private final PostService postService;
 
-    @Scheduled(cron = "0 30 3 * * *")
-    //@Scheduled(fixedRate = 1000*60*60*24)
+    //@Scheduled(cron = "0 30 3 * * *")
+    @Scheduled(fixedRate = 1000*60*60*24)
     public void run() {
         LocalDateTime now = LocalDateTime.now();
         log.info("Start generating posts job");

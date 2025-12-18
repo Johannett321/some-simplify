@@ -28,7 +28,7 @@ public class Post extends AbstractBaseEntity {
     @Enumerated(EnumType.STRING)
     private List<PlatformType> platforms;
 
-    @OneToMany
+    @ManyToMany
     private List<ContentFile> contentFiles;
 
     @Enumerated(EnumType.STRING)
