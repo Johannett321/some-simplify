@@ -26,7 +26,8 @@ public class ImageGenerationService {
     private String apiKey;
 
     private final ChatModel chatModel;
-    @Scheduled(fixedRate = 1000 * 60 * 60* 24)
+    @Scheduled(cron = "0 0 0 * * *")
+    //@Scheduled(fixedRate = 1000 * 60 * 60* 24)
     private void generatePrompt() {
         log.info("Generating prompt for image generation...");
         String system = """
