@@ -1,5 +1,6 @@
 package com.somesimplify.somesimplify.multitenancy.filter;
 
+import com.somesimplify.somesimplify.exception.UnauthorizedException;
 import com.somesimplify.somesimplify.model.User;
 import com.somesimplify.somesimplify.multitenancy.util.TenantContext;
 import com.somesimplify.somesimplify.repository.TenantRepository;
@@ -47,7 +48,7 @@ public class TenantFilter extends OncePerRequestFilter {
 
         // make sure user has access to tenant
         if (tenantId != null && !tenantRepository.existsByIdAndUsersContains(tenantId, currentUser)) {
-            throw new AccessDeniedException("Access denied");
+            throw new UnauthorizedException("Access denied");
         }
 
         if (tenantId != null) {
