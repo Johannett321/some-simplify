@@ -1,0 +1,43 @@
+get:
+  tags:
+    - Tenant
+  summary: Get tenant profile for current tenant
+  operationId: getTenantProfile
+  responses:
+    '200':
+      description: Tenant profile
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/tenant/TenantProfileTO.yaml'
+    '404':
+      description: Profile not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/ErrorResponseTO.yaml'
+
+put:
+  tags:
+    - Tenant
+  summary: Create or update tenant profile
+  operationId: upsertTenantProfile
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../schemas/tenant/TenantProfileTO.yaml'
+  responses:
+    '200':
+      description: Profile updated successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/tenant/TenantProfileTO.yaml'
+    '400':
+      description: Invalid input
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/ErrorResponseTO.yaml'

@@ -52,14 +52,14 @@ export const TenantPickerPage = ({tenants, onSelectTenant}: TenantPickerPageProp
                 ) : (
                     <Empty>
                         <EmptyHeader>
-                            <EmptyTitle>Opprett ditt første foretak</EmptyTitle>
+                            <EmptyTitle>Opprett ditt første sted</EmptyTitle>
                             <EmptyDescription>
-                                Du har ingen foretak. Kom i gang ved å lage ditt første foretak
+                                Du har ingen sted. Kom i gang ved å lage ditt første sted
                             </EmptyDescription>
                         </EmptyHeader>
                         <EmptyContent>
                             <Button onClick={() => navigate("/opprett-foretak")}>
-                                Opprett foretak
+                                Opprett sted
                             </Button>
                         </EmptyContent>
                     </Empty>

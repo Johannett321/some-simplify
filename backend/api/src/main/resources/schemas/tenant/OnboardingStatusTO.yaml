@@ -1,0 +1,14 @@
+type: object
+properties:
+  step1Completed:
+    type: boolean
+    description: True if tenant profile exists with all required fields
+  step2Completed:
+    type: boolean
+    description: True if Instagram connection is active
+  profileExists:
+    type: boolean
+    description: True if tenant profile exists (regardless of completeness)
+  instagramConnected:
+    type: boolean
+    description: True if Instagram is connected

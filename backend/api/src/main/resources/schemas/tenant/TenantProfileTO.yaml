@@ -1,0 +1,38 @@
+type: object
+properties:
+  id:
+    type: string
+  tenantId:
+    type: string
+  address:
+    type: string
+  concept:
+    type: string
+    enum:
+      - Bakeri
+      - Brun Pub
+      - Fine Dining
+      - Nattklubb
+      - Annet
+  conceptOther:
+    type: string
+  targetAudience:
+    type: array
+    items:
+      type: string
+  targetAudienceOther:
+    type: string
+  websiteUrl:
+    type: string
+    format: uri
+  createdAt:
+    type: string
+    format: date-time
+  updatedAt:
+    type: string
+    format: date-time
+required:
+  - address
+  - concept
+  - targetAudience
+  - websiteUrl

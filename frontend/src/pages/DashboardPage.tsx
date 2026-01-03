@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button.tsx'
 import { ChevronLeft, ChevronRight, Calendar } from 'lucide-react'
 import { toast } from 'sonner'
 import { useNavigate } from 'react-router-dom'
+import { OnboardingBanner } from '@/components/onboarding/OnboardingBanner'
 
 export const DashboardPage = () => {
     const navigate = useNavigate()
@@ -162,6 +163,8 @@ export const DashboardPage = () => {
 
     return (
         <div className="space-y-6">
+            <OnboardingBanner />
+
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="text-3xl font-bold text-gray-900">Innholdskalender</h1>

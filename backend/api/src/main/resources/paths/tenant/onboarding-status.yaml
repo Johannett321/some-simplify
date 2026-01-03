@@ -1,0 +1,12 @@
+get:
+  tags:
+    - Tenant
+  summary: Get onboarding completion status
+  operationId: getOnboardingStatus
+  responses:
+    '200':
+      description: Onboarding status
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/tenant/OnboardingStatusTO.yaml'

@@ -52,17 +52,17 @@ export function CreateTenantForm() {
             <div>
                 <Input
                     type="text"
-                    placeholder="Foretak navn"
+                    placeholder="Navn på stedet ditt"
                     {...register('name', { required: 'Foretak navn er påkrevd' })}
                 />
                 {errors.name && <p className="text-sm text-red-500">{errors.name.message}</p>}
             </div>
 
             <Button type="submit" className="w-full" disabled={isSubmitting}>
-                {isSubmitting ? 'Oppretter...' : 'Opprett foretak'}
+                {isSubmitting ? 'Oppretter...' : 'Opprett sted'}
             </Button>
             <div className={"text-sm text-muted-foreground"}>
-                <Link to={"/"}>Tilbake til foretakvelger</Link>
+                <Link to={"/"}>Tilbake til stedsvelger</Link>
             </div>
         </form>
     )
